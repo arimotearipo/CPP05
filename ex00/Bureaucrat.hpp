@@ -5,12 +5,14 @@
 #include "colours.h"
 
 using std::string;
+using std::exception;
+using std::ostream;
 
 class Bureaucrat
 {
 	public:
 		Bureaucrat(void);
-		Bureaucrat(string name, int grade);
+		Bureaucrat(string const &name, int grade);
 		Bureaucrat(Bureaucrat const &tocopy);
 		Bureaucrat &operator=(Bureaucrat const &toassign);
 		~Bureaucrat(void);
@@ -20,23 +22,30 @@ class Bureaucrat
 		void	incrementGrade(void);
 
 		//getters
-		string	getName(void);
-		int		getGrade(void);
+		// Need to make these two methods a const method because calling it
+		// in the operator << overloading function will not work.
+		// Still figuring out why
+		string	getName(void) const;
+		int		getGrade(void) const;
 
-		try
+		// exception classes
+		class GradeTooHighException : public exception
 		{
-			bool	checkGrade(void);
-			throw	GradeTooHighException(void);
-			throw	GradeTooLowException(void);
-		}
-		catch
+			public:
+				virtual const char *what(void) const throw();
+		};
+
+		class GradeTooLowException : public exception
 		{
-			
-		}
+			public:
+				virtual const char *what(void) const throw();
+		};
 
 	private:
 		string	const	_name;
 		int				_grade;
 };
+
+ostream	&operator<<(ostream &OSTREAM, Bureaucrat const &toprint);
 
 #endif
