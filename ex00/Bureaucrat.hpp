@@ -22,9 +22,16 @@ class Bureaucrat
 		void	incrementGrade(void);
 
 		//getters
-		// Need to make these two methods a const method because calling it
-		// in the operator << overloading function will not work.
-		// Still figuring out why
+		// These two getters needs to be a const method.
+		// Note: A const method is a method that won't change any variable's
+		// value in its class.
+		// Therefore, in the operator<< overloading function, we pass in a Bueraucrat
+		// class type as a parameter and that parameter is set to be a const.
+		// If the parameter is set to be a const, that means nothing in the parameter's
+		// value shall be changed and if these setters are not a const method, then that means
+		// there's a pssibility that these methods might change with the values inside, which
+		// will then contradict with nature of the const Bureaucrat parameter in the operator 
+		// overloading function
 		string	getName(void) const;
 		int		getGrade(void) const;
 
