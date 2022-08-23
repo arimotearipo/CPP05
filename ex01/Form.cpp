@@ -77,8 +77,9 @@ void	Form::beSigned(Bureaucrat const &tosign)
 
 ostream &operator<<(ostream &OSTREAM, Form const &form)
 {
-	OSTREAM << YEL << std::setw(26) << "Form name: " << BYEL << form.getName() << endl;
-	OSTREAM << YEL << std::setw(26) << "Signed status: " << BYEL << form.getSignedStatus() << endl;
-	OSTREAM << YEL << std::setw(26) << "Grade required to sign: " << BYEL << form.getGradeToSign() << endl;
-	OSTREAM << YEL << std::setw(26) << "Grade required to execute:" << BYEL << form.getGradeToExec() << endl;
+	OSTREAM << YEL << std::left << std::setw(26) << "Form name: " << BYEL << form.getName() << endl;
+	OSTREAM << YEL << std::left << std::setw(26) << "Signed status: " << BYEL << form.getSignedStatus() << endl;
+	OSTREAM << YEL << std::left << std::setw(26) << "Grade required to sign: " << BYEL << form.getGradeToSign() << endl;
+	OSTREAM << YEL << std::left << std::setw(26) << "Grade required to execute:" << BYEL << form.getGradeToExec() << endl;
+	return (OSTREAM);
 }

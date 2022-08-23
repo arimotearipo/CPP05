@@ -1,13 +1,15 @@
+#include "Bureaucrat.hpp"
 #ifndef FORM_HPP
 #define FORM_HPP
 
 #include <iostream>
 #include <exception>
-#include "Bureaucrat.hpp"
 
 using std::string;
 using std::exception;
 using std::ostream;
+
+class Bureaucrat;
 
 class Form
 {

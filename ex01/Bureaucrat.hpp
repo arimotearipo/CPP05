@@ -9,6 +9,8 @@ using std::string;
 using std::exception;
 using std::ostream;
 
+class Form;
+
 class Bureaucrat
 {
 	public:
