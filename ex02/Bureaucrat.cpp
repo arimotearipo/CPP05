@@ -57,9 +57,22 @@ void	Bureaucrat::signForm(Form &formtosign) const
 		formtosign.beSigned(*this);
 		cout << GRN << this->getName() << " signed " << formtosign.getName() << RESET << endl;
 	}
-	catch (exception const &e)
+	catch (Form::GradeTooLowException const &e)
 	{
 		cout << GRN << this->getName() << " couldn't sign " << formtosign.getName() << " because grade is too low" << endl;
+	}
+}
+
+void	Bureaucrat::executeForm(Form const &formtoexe)
+{
+	try
+	{
+		formtoexe.execute(*this);
+		cout << GRN << this->getName() << " executed " << formtoexe.getName() << RESET << endl;
+	}
+	catch (exception const &e)
+	{
+		cout << GRN << this->getName() << " couldn't execute " << formtoexe.getName() << " because grade is too low" << endl;
 	}
 }
 

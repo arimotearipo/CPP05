@@ -10,7 +10,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(void) : Form("Untitled", 145, 137),
 	cout << BLU << "[SHRUBBERYCREATIONFORM CLASS CONSTRUCTED]" << RESET << endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(string const &target) : Form(target + "_shrubbery", 145, 137), _target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(string const &target) : Form(target, 145, 137), _target(target)
 {
 	cout << BLU << "[SHRUBBERYCREATIONFORM CLASS CONSTRUCTED BY PARAMETER]" << RESET << endl;
 }
@@ -35,8 +35,13 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void)
 
 void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
-	if (executor.getGrade() > this->getGradeToExec())
+	if (executor.getGrade() > this->getGradeToExec() || this->getSignedStatus() == false)
 	{
+		// need to do exceptions
+		// need to do exceptions
+		// need to do exceptions
+		// need to do exceptions
+		// need to do exceptions
 		// need to do exceptions
 		return ;
 	}
@@ -44,14 +49,14 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 
 	outfile << "	               ,@@@@@@@," << endl;
 	outfile << "       ,,,.   ,@@@@@@/@@,  .oo8888o." << endl;
-	outfile << "    ,&%%&%&&%,@@@@@/@@@@@@,8888\88/8o" << endl;
-	outfile << "   ,%&\%&&%&&%,@@@\@@@/@@@88\88888/88'" << endl;
-	outfile << "   %&&%&%&/%&&%@@\@@/ /@@@88888\88888'" << endl;
-	outfile << "   %&&%/ %&%%&&@@\ V /@@' `88\8 `/88'" << endl;
-	outfile << "   `&%\ ` /%&'    |.|        \ '|8'" << endl;
+	outfile << "    ,&\\%%&%&&%,@@@@@/@@@@@@,8888\\88/8o" << endl;
+	outfile << "   ,%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'" << endl;
+	outfile << "   %&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'" << endl;
+	outfile << "   %&&%/ %&\\%%&&@@\\ V /@@' `88\\8 `/88'" << endl;
+	outfile << "   `&%\\ ` /%&'    |.|        \\ '|8'" << endl;
 	outfile << "       |o|        | |         | |" << endl;
 	outfile << "       |.|        | |         | |" << endl;
-	outfile << "jgs \\/ ._\//_/__/  ,\_//__\\/.  \_//__/_" << endl;
+	outfile << "VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV" << endl;
 
 	outfile.close();
 }

@@ -39,6 +39,7 @@ class Bureaucrat
 		int		getGrade(void) const;
 
 		void	signForm(Form &formtosign) const;
+		void	executeForm(Form  const &formtoexe);
 
 		// exception classes
 		class GradeTooHighException : public exception
