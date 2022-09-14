@@ -1,6 +1,11 @@
 MAIN = main.cpp
 
-SRCS = Bureaucrat.cpp Form.cpp
+SRCS = 	Bureaucrat.cpp \
+		Form.cpp \
+		ShrubberyCreationForm.cpp \
+		RobotomyRequestForm.cpp \
+		PresidentialPardonForm.cpp \
+		Intern.cpp \
 
 OBJS = $(SRCS:.cpp=.o) main.o
 

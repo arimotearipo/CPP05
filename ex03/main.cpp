@@ -2,6 +2,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "Intern.hpp"
 #include <iostream>
 
 using std::cout;
@@ -9,7 +10,7 @@ using std::endl;
 
 int	main(void)
 {
-	Bureaucrat a("Biro", 1);
+	// Bureaucrat a("Biro", 1);
 	// RobotomyRequestForm b("Victim");
 
 	// a.signForm(b);
@@ -27,6 +28,11 @@ int	main(void)
 	// abc.signForm(p);
 	// a.executeForm(p);
 
+
+	// Intern noob;
+
+	// Form	*a = noob.makeForm("presidential pardon", "a bureaucrat");
+	
 	
 	return (0);
 }
