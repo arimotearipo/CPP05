@@ -74,6 +74,6 @@ const char	*Bureaucrat::GradeTooLowException::what(void) const throw()
 
 ostream	&operator<<(ostream &OSTREAM, Bureaucrat const &toprint)
 {
-	OSTREAM << toprint.getName() << ", bureaucrat grade " << toprint.getGrade() << ".";
+	OSTREAM << BGRN << toprint.getName() << RESET << ", bureaucrat grade " << BGRN << toprint.getGrade() << RESET << ".";
 	return (OSTREAM);
 }

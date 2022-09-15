@@ -55,11 +55,11 @@ void	Bureaucrat::signForm(Form &formtosign) const
 	try
 	{
 		formtosign.beSigned(*this);
-		cout << GRN << this->getName() << " signed " << formtosign.getName() << RESET << endl;
+		cout << GRN << this->getName() << RESET << " signed " << GRN << formtosign.getName() << RESET << endl;
 	}
 	catch (exception const &e)
 	{
-		cout << GRN << this->getName() << " couldn't sign " << formtosign.getName() << " because grade is too low" << endl;
+		cout << GRN << this->getName() << RESET << " couldn't sign " << GRN << formtosign.getName() << RESET << " because grade is too low" << endl;
 	}
 }
 
@@ -89,6 +89,6 @@ const char	*Bureaucrat::GradeTooLowException::what(void) const throw()
 
 ostream	&operator<<(ostream &OSTREAM, Bureaucrat const &toprint)
 {
-	OSTREAM << toprint.getName() << ", bureaucrat grade " << toprint.getGrade() << ".";
+	OSTREAM << BGRN << toprint.getName() << RESET << ", bureaucrat grade " << BGRN << toprint.getGrade() << RESET << ".";
 	return (OSTREAM);
 }
