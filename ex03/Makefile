@@ -27,6 +27,7 @@ $(OBJS):	$(MAIN) $(SRCS)
 
 clean:		
 			rm -rf $(OBJS)
+			rm -rf *.shrub
 
 fclean:		clean
 			rm -rf $(NAME)

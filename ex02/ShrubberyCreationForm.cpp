@@ -35,7 +35,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void)
 
 void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
-	if (executor.getGrade() > this->getGradeToExec() || this->getSignedStatus() == false)
+	if (executor.getGrade() > this->getGradeToExec())
 	{
 		// need to do exceptions
 		// need to do exceptions
@@ -43,9 +43,11 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 		// need to do exceptions
 		// need to do exceptions
 		// need to do exceptions
-		return ;
+		throw GradeTooLowException();
 	}
-	ofstream outfile((this->_target + "_shrubbery").c_str());
+	else if (this->getSignedStatus() == false)
+		throw UnsignedFormException();
+	ofstream outfile((this->_target + "_shrubbery.shrub").c_str());
 
 	outfile << "	               ,@@@@@@@," << endl;
 	outfile << "       ,,,.   ,@@@@@@/@@,  .oo8888o." << endl;

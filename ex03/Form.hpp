@@ -32,6 +32,11 @@ class Form
 			public:
 				virtual const char *what(void) const throw();
 		};
+		class 	UnsignedFormException : public exception
+		{
+			public:
+				virtual const char *what(void) const throw();
+		};
 
 		// Getters
 		string const 	&getName(void) const;
@@ -43,6 +48,8 @@ class Form
 		void			beSigned(Bureaucrat const &tosign);
 
 		virtual void	execute(Bureaucrat const &executor) const = 0;
+
+
 
 	private:
 		string const	_name;

@@ -45,6 +45,11 @@ const char *Form::GradeTooLowException::what(void) const throw()
 	return ("Grade is too low\n");
 }
 
+const char	*Form::UnsignedFormException::what(void) const throw()
+{
+	return ("The form isn't signed");
+}
+
 string const	&Form::getName(void) const
 {
 	return (this->_name);

@@ -33,7 +33,7 @@ RobotomyRequestForm::~RobotomyRequestForm(void)
 
 void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
-	if (executor.getGrade() > this->getGradeToExec() || this->getSignedStatus() == false)
+	if (executor.getGrade() > this->getGradeToExec())
 	{
 		// need to do exceptions
 		// need to do exceptions
@@ -41,8 +41,10 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 		// need to do exceptions
 		// need to do exceptions
 		// need to do exceptions
-		return ;
+		throw GradeTooLowException();
 	}
+	else if (this->getSignedStatus() == false)
+		throw UnsignedFormException();
 	int result;
 	srand(time(NULL));
 	result = rand() % 2;

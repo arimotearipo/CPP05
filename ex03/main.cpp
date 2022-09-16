@@ -8,31 +8,66 @@
 using std::cout;
 using std::endl;
 
-int	main(void)
+/*
+Forms index: [0] Shrubbery [1] Robotomy [2] Presidential
+
+Form name:                shrubbery creation
+Grade required to sign:   145
+Grade required to execute:137
+
+Form name:                robotomy request
+Grade required to sign:   72
+Grade required to execute:45
+
+Form name:                presidential pardon
+Grade required to sign:   25
+Grade required to execute:5
+*/
+int	main(int ac, char **av)
 {
-	// Bureaucrat a("Biro", 1);
-	// RobotomyRequestForm b("Victim");
+	if (ac != 4)
+	{
+		cout << "Forms index: [0] Shrubbery [1] Robotomy [2] Presidential" << endl;
+		cout << "To test: ./bureaucrat [Grade of signee bureaucrat] [Grade of executor bureaucrat] [Index of form to be created]" << endl;
+		return (1);
+	}
+	int grade1 = atoi(av[1]); // change this value to change the grade of the Bureaucrat at creation
+	string name1 = "Signee";
+	cout << UWHT "Instantiating signee Bureaucrat named " << name1 << " with grade " << grade1 << "..." RESET << endl;
+	Bureaucrat a(name1, grade1);
+	cout << endl;
 
-	// a.signForm(b);
-	// a.executeForm(b);
-
-	// Bureaucrat biro("Biro", 150);
-	// ShrubberyCreationForm shrub("Home");
-
-	// biro.signForm(shrub);
-	// biro.executeForm(shrub);
-
-	// Bureaucrat abc("abc", 1);
-	// PresidentialPardonForm p("dont know");
-
-	// abc.signForm(p);
-	// a.executeForm(p);
+	int	grade2 = atoi(av[2]);
+	string name2 = "Executor";
+	cout << UWHT "Instantiating executor Bureacrat named " << name2 << name2 << " with grade " << grade2 << "..." RESET << endl;
+	Bureaucrat b(name2, grade2);
+	cout << endl;
 
 
-	// Intern noob;
+	string	forms[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
+	cout << UWHT "Instantiating an Intern object..." RESET << endl;
+	Intern c;
+	cout << endl;
 
-	// Form	*a = noob.makeForm("presidential pardon", "a bureaucrat");
+	int formindex = atoi(av[3]); // change this value to change form to be made
+	cout << UWHT "Intern making form..." << RESET << endl;
+	Form *d = c.makeForm(forms[formindex], forms[formindex]);
+	cout << endl;
+
+	cout << UWHT "Printing form details..." RESET << endl;
+	cout << *d << endl;
+
+	cout << UWHT "Printing the bureaucrats' details..." RESET << endl;
+	cout << a << endl << b << endl << endl;
+
+	cout << UWHT "Signee Bureaucrat will try to sign form " << forms[formindex] << "..." RESET << endl;
+	a.signForm(*d);
+	cout << endl;
+
+	cout << UWHT "Executor Bureaucrat will try to execute form " << forms[formindex] << "..." RESET << endl;
+	b.executeForm(*d);
+	cout << endl;
 	
-	
+	cout << UWHT "Ending programme..." RESET << endl;
 	return (0);
 }

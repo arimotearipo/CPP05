@@ -33,7 +33,7 @@ PresidentialPardonForm::~PresidentialPardonForm(void)
 
 void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
-	if (executor.getGrade() > this->getGradeToExec() || this->getSignedStatus() == false)
+	if (executor.getGrade() > this->getGradeToExec())
 	{
 		// need to do exceptions
 		// need to do exceptions
@@ -41,7 +41,9 @@ void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
 		// need to do exceptions
 		// need to do exceptions
 		// need to do exceptions
-		return ;
+		throw GradeTooLowException();
 	}
+	else if (this->getSignedStatus() == false)
+		throw UnsignedFormException();
 	cout << BWHT << this->_target << " has been pardoned by Zaphod Beeblebrox" << RESET << endl;
 }

@@ -37,12 +37,17 @@ Form::~Form(void)
 
 const char *Form::GradeTooHighException::what(void) const throw()
 {
-	return ("Grade is too high\n");
+	return ("Grade is too high");
 }
 
 const char *Form::GradeTooLowException::what(void) const throw()
 {
-	return ("Grade is too low\n");
+	return ("Grade is too low");
+}
+
+const char	*Form::UnsignedFormException::what(void) const throw()
+{
+	return ("The form isn't signed");
 }
 
 string const	&Form::getName(void) const
@@ -80,6 +85,6 @@ ostream &operator<<(ostream &OSTREAM, Form const &form)
 	OSTREAM << YEL << std::left << std::setw(26) << "Form name: " << BYEL << form.getName() << endl;
 	OSTREAM << YEL << std::left << std::setw(26) << "Signed status: " << BYEL << form.getSignedStatus() << endl;
 	OSTREAM << YEL << std::left << std::setw(26) << "Grade required to sign: " << BYEL << form.getGradeToSign() << endl;
-	OSTREAM << YEL << std::left << std::setw(26) << "Grade required to execute:" << BYEL << form.getGradeToExec() << endl;
+	OSTREAM << YEL << std::left << std::setw(26) << "Grade required to execute:" << BYEL << form.getGradeToExec() << RESET << endl;
 	return (OSTREAM);
 }

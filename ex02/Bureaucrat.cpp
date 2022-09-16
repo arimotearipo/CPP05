@@ -59,7 +59,7 @@ void	Bureaucrat::signForm(Form &formtosign) const
 	}
 	catch (Form::GradeTooLowException const &e)
 	{
-		cout << GRN << this->getName() << " couldn't sign " << formtosign.getName() << " because grade is too low" << endl;
+		cout << GRN << this->getName() << " couldn't sign " << formtosign.getName() << " because " << e.what() <<  RESET << endl;
 	}
 }
 
@@ -72,7 +72,7 @@ void	Bureaucrat::executeForm(Form const &formtoexe)
 	}
 	catch (exception const &e)
 	{
-		cout << GRN << this->getName() << " couldn't execute " << formtoexe.getName() << " because grade is too low" << endl;
+		cout << GRN << this->getName() << " couldn't execute " << formtoexe.getName() << " because " << e.what() << RESET << endl;
 	}
 }
 
@@ -92,12 +92,12 @@ void	Bureaucrat::incrementGrade(void)
 
 const char	*Bureaucrat::GradeTooHighException::what(void) const throw()
 {
-	return ("Grade is too high. Highest is 1.\n");
+	return ("Grade is too high. Highest is 1.");
 }
 
 const char	*Bureaucrat::GradeTooLowException::what(void) const throw()
 {
-	return ("Grade is too low. Lowest is 150.\n");
+	return ("Grade is too low. Lowest is 150.");
 }
 
 ostream	&operator<<(ostream &OSTREAM, Bureaucrat const &toprint)

@@ -64,12 +64,12 @@ void	Bureaucrat::incrementGrade(void)
 
 const char	*Bureaucrat::GradeTooHighException::what(void) const throw()
 {
-	return ("Grade is too high. Highest is 1.\n");
+	return ("Grade is too high. Highest is 1.");
 }
 
 const char	*Bureaucrat::GradeTooLowException::what(void) const throw()
 {
-	return ("Grade is too low. Lowest is 150.\n");
+	return ("Grade is too low. Lowest is 150.");
 }
 
 ostream	&operator<<(ostream &OSTREAM, Bureaucrat const &toprint)

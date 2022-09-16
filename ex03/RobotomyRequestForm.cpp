@@ -33,7 +33,7 @@ RobotomyRequestForm::~RobotomyRequestForm(void)
 
 void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
-	if (executor.getGrade() > this->getGradeToExec() || this->getSignedStatus() == false)
+	if (executor.getGrade() > this->getGradeToExec())
 	{
 		// need to do exceptions
 		// need to do exceptions
@@ -41,8 +41,10 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 		// need to do exceptions
 		// need to do exceptions
 		// need to do exceptions
-		return ;
+		throw GradeTooLowException();
 	}
+	else if (this->getSignedStatus() == false)
+		throw UnsignedFormException();
 	int result;
 	srand(time(NULL));
 	result = rand() % 2;
@@ -57,7 +59,7 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 	}
 	sleep(1);
 	if (result == 1)
-		cout << "SUCCESS! " << this->_target << " has turned into a robot!" << endl;
+		cout << "SUCCESS! " << executor.getName() << " has turned into a robot!" << endl;
 	else
-		cout << "FAIL! :( " << this->_target << " remains a human." << endl;
+		cout << "FAIL! :( " << executor.getName() << " remains a human." << endl;
 }

@@ -54,6 +54,8 @@ class Bureaucrat
 				virtual const char *what(void) const throw();
 		};
 
+
+
 	private:
 		string	const	_name;
 		int				_grade;

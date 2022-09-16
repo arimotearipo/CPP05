@@ -32,6 +32,11 @@ class Form
 			public:
 				virtual const char *what(void) const throw();
 		};
+		class 	UnsignedFormException : public exception
+		{
+			public:
+				virtual const char *what(void) const throw();
+		};
 
 		// Getters
 		string const 	&getName(void) const;

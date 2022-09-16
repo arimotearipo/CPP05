@@ -37,12 +37,17 @@ Form::~Form(void)
 
 const char *Form::GradeTooHighException::what(void) const throw()
 {
-	return ("Grade is too high\n");
+	return ("Grade is too high");
 }
 
 const char *Form::GradeTooLowException::what(void) const throw()
 {
-	return ("Grade is too low\n");
+	return ("Grade is too low");
+}
+
+const char	*Form::UnsignedFormException::what(void) const throw()
+{
+	return ("The form isn't signed");
 }
 
 string const	&Form::getName(void) const
