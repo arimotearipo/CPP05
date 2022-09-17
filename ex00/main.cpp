@@ -61,11 +61,14 @@ int	main(int ac, char ** av)
 	try
 	{
 		Bureaucrat b("Sir", z);
+		cout << b << endl;
 	}
 	catch (std::exception const &e)
 	{
 		cerr << "Caught an error: " << e.what() << endl;
 	}
+	cout << endl;
 
+	cout << UWHT "Ending programme..." RESET << endl;
 	return (0);
 }
