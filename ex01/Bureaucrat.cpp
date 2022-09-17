@@ -21,13 +21,14 @@ Bureaucrat::Bureaucrat(string const &name, int grade) : _name(name)
 
 Bureaucrat::Bureaucrat(Bureaucrat const &tocopy)
 {
-	this->_grade = tocopy._grade;
+	*this = tocopy;
 	cout << BLU << "[BUREAUCRAT CLASS CONSTRUCTED BY COPY]" << RESET << endl;
 }
 
 Bureaucrat &Bureaucrat::operator=(Bureaucrat const &toassign)
 {
-	*this = toassign;
+	if (this != &toassign)
+		*this = toassign;
 	cout << BLU << "[BUREAUCRAT CLASS CONSTRUCTED BY ASSIGNMENT]" << RESET << endl;
 	return (*this);
 }

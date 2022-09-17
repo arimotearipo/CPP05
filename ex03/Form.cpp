@@ -13,6 +13,10 @@ Form::Form(void) : _name("unknown form"), _signed_status(false), _grade_to_sign(
 
 Form::Form(string const &name, int gradetosign, int gradetoexec) : _name(name), _signed_status(false), _grade_to_sign(gradetosign), _grade_to_exec(gradetoexec)
 {
+	if (gradetosign > 150 || gradetoexec > 150)
+		throw GradeTooLowException();
+	else if (gradetosign < 1 || gradetoexec < 1)
+		throw GradeTooLowException();
 	cout << BLU << "[FORM CLASS CONSTRUCTED BY PARAMETER]" << RESET << endl;
 }
 
@@ -23,7 +27,8 @@ Form::Form(Form const &tocopy) : _name(tocopy.getName()), _signed_status(tocopy.
 
 Form	&Form::operator=(Form const &toassign)
 {
-	*this = toassign;
+	if (this != &toassign)
+		*this = toassign;
 	cout << BLU << "[FORM CLASS CONSTRUCTED BY ASSIGNMENT]" << RESET << endl;
 	return (*this);
 }

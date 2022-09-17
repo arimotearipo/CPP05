@@ -1,10 +1,17 @@
 #include "Bureaucrat.hpp"
 
+using std::cerr;
 using std::cout;
 using std::endl;
 
-int	main(void)
+int	main(int ac, char ** av)
 {
+	if (ac != 4)
+	{
+		cout << "./bureaucrat [value to decrement] [value to increment] [value to set]" << endl;
+		return (1);
+	}
+
 	cout << UWHT << "Instantianting a Bureaucrat object..." RESET << endl;
 	Bureaucrat a;
 	cout << endl;
@@ -13,25 +20,52 @@ int	main(void)
 	cout << a << endl;
 	cout << endl;
 
-	int x = 100; // change this value to decrement
-	cout << UWHT "Decrementing grade " << x << " times..." RESET << endl;
-	for (int i = 0; i < x; i++)
-		a.decrementGrade();
+	int x = atoi(av[1]); // change this value to decrement
+	cout << UWHT "Trying to decrement grade " << x << " times..." RESET << endl;
+	try
+	{
+		for (int i = 0; i < x; i++)
+			a.decrementGrade();
+		cout << "Decrementing process is successful" << endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "Caught an error: " << e.what() << endl;
+	}
 	cout << endl;
 
 	cout << UWHT "Printing Bureaucrat details..." RESET << endl;
 	cout << a << endl;
 	cout << endl;
 
-	int y = 101; // change this value to increment
-	cout << UWHT "Incrementing grade " << y << " times..." RESET << endl;
-	for (int i = 0; i < y; i++)
-		a.incrementGrade();
+	int y = atoi(av[2]); // change this value to increment
+	cout << UWHT "Trying to increment grade " << y << " times..." RESET << endl;
+	try
+	{
+		for (int i = 0; i < y; i++)
+			a.incrementGrade();
+		cout << "Incrementing process is successful" << endl;
+	}
+	catch (std::exception const &e)
+	{
+		cerr << "Caught an error: " << e.what() << endl;
+	}
 	cout << endl;
 
 	cout << UWHT "Printing Bureaucrat details..." RESET << endl;
 	cout << a << endl;
 	cout << endl;
+
+	int z = atoi(av[3]); // change this value to set
+	cout << UWHT "Trying to instantiate a Bureaucrat with grade " << z <<  "..." RESET << endl;
+	try
+	{
+		Bureaucrat b("Sir", z);
+	}
+	catch (std::exception const &e)
+	{
+		cerr << "Caught an error: " << e.what() << endl;
+	}
 
 	return (0);
 }

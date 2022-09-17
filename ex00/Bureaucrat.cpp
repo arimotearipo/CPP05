@@ -26,7 +26,8 @@ Bureaucrat::Bureaucrat(Bureaucrat const &tocopy)
 
 Bureaucrat &Bureaucrat::operator=(Bureaucrat const &toassign)
 {
-	*this = toassign;
+	if (this != &toassign)
+		*this = toassign;
 	cout << BLU << "[BUREAUCRAT CLASS CONSTRUCTED BY ASSIGNMENT]" << RESET << endl;
 	return (*this);
 }

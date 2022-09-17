@@ -8,11 +8,19 @@ using std::ostream;
 // Orthodox Canonical Form shit
 Form::Form(void) : _name("unknown form"), _signed_status(false), _grade_to_sign(150), _grade_to_exec(150)
 {
+	if (this->_grade_to_sign > 150 || this->_grade_to_exec > 150)
+		throw GradeTooLowException();
+	else if (this->_grade_to_sign < 1 || this->_grade_to_exec < 1)
+		throw GradeTooLowException();
 	cout << BLU << "[FORM CLASS CONSTRUCTED]" << RESET << endl;
 }
 
 Form::Form(string const &name, int gradetosign, int gradetoexec) : _name(name), _signed_status(false), _grade_to_sign(gradetosign), _grade_to_exec(gradetoexec)
 {
+	if (gradetosign > 150 || gradetoexec > 150)
+		throw GradeTooLowException();
+	else if (gradetosign < 1 || gradetoexec < 1)
+		throw GradeTooLowException();
 	cout << BLU << "[FORM CLASS CONSTRUCTED BY PARAMETER]" << RESET << endl;
 }
 
@@ -23,7 +31,8 @@ Form::Form(Form const &tocopy) : _name(tocopy.getName()), _signed_status(tocopy.
 
 Form	&Form::operator=(Form const &toassign)
 {
-	*this = toassign;
+	if (this != &toassign)
+		*this = toassign;
 	cout << BLU << "[FORM CLASS CONSTRUCTED BY ASSIGNMENT]" << RESET << endl;
 	return (*this);
 }
